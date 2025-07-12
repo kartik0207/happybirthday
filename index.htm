@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday My Love</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 50px;
+      font-size: 3.5em;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 1.5em;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff4081, 0 0 30px #ff4081;
+      }
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 40px #ff4081, 0 0 60px #ff4081;
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .button {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: #fff;
+      background: #ff4081;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday, Sukoon ❤️</h1>
+  <p>
+    Dear Sukoon,<br><br>
+    On this special day, I want to tell you just how deeply I love you. You make my life brighter, my days sweeter, and my heart fuller. You are not just my wife, you are my best friend, my dream, and my forever. <br><br>
+    I’m so lucky to walk through life with you by my side. May this year bring you all the love and joy that you bring into my life every day. 💖<br><br>
+    Happy Birthday, My Sukoon! 👑
+  </p>
+
+  <a class="button" href="#">🎉 Let’s Celebrate!</a>
+
+  <!-- Floating hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 2 + 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+  <!-- Optional: Add background music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+</body>
+</html>
