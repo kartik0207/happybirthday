@@ -3,131 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday My Love</title>
+  <title>Happy Birthday My Love 💖</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap');
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #ffdde1, #ee9ca7);
-      color: #fff;
-      text-align: center;
       overflow: hidden;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to top right, #ffdde1, #ffb6c1);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: #fff;
+    }
+
+    .card {
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 40px rgba(255, 192, 203, 0.4);
+      max-width: 700px;
+      width: 90%;
     }
 
     h1 {
-      margin-top: 50px;
-      font-size: 3.5em;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 20px;
       animation: glow 2s ease-in-out infinite alternate;
     }
 
     p {
-      font-size: 1.5em;
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin: 20px 0;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: float 6s linear infinite;
+      width: 24px;
+      height: 24px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+      background-size: cover;
+      opacity: 0.8;
+      animation: floatUp 10s linear infinite;
     }
 
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
-    }
-
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #ff4081, 0 0 30px #ff4081;
-      }
-      to {
-        text-shadow: 0 0 20px #fff, 0 0 40px #ff4081, 0 0 60px #ff4081;
-      }
-    }
-
-    @keyframes float {
+    @keyframes floatUp {
       0% {
-        transform: translateY(100vh) rotate(45deg);
+        transform: translateY(100vh) scale(0.6) rotate(0deg);
         opacity: 0;
       }
       50% {
         opacity: 1;
       }
       100% {
-        transform: translateY(-10vh) rotate(45deg);
+        transform: translateY(-10vh) scale(1.2) rotate(360deg);
         opacity: 0;
       }
     }
 
-    .button {
-      margin-top: 30px;
-      display: inline-block;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      color: #fff;
-      background: #ff4081;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      text-decoration: none;
-      animation: glow 1.5s ease-in-out infinite alternate;
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 30px #ff1493;
+      }
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 40px #ff1493;
+      }
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Happy Birthday, Sukoon ❤️</h1>
-  <p>
-    Dear Sukoon,<br><br>
-    On this special day, I want to tell you just how deeply I love you. You make my life brighter, my days sweeter, and my heart fuller. You are not just my wife, you are my best friend, my dream, and my forever. <br><br>
-    I’m so lucky to walk through life with you by my side. May this year bring you all the love and joy that you bring into my life every day. 💖<br><br>
-    Happy Birthday, My Sukoon! 👑
-  </p>
 
-  <a class="button" href="#">🎉 Let’s Celebrate!</a>
+  <!-- Background Floating Hearts -->
+  <div class="floating-hearts" id="hearts-container"></div>
 
-  <!-- Floating hearts -->
-  <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 2 + 4 + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
-    }
-
-    setInterval(createHeart, 300);
-  </script>
-
-  <!-- Optional: Add background music -->
+  <!-- Music -->
   <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <!-- Birthday Message -->
+  <div class="card">
+    <h1>Happy Birthday Daddu,bhuri, My sukoon ♥</h1>
+    <p>
+      10 years of memories, laughter, and love can never be forgotten.
+      Even though we are not together now, your bond was real, deep, and rare. <br><br>
+      You are my joy, my strength, and my heart’s greatest treasure.Wishing you peace, happiness, and all the love you deserve on your special day. <br>
+      Some connections never truly fade… they just live on in a quiet corner of the heart <br><br>
+      May this birthday be as beautiful, magical, and unforgettable as you are to me. <br><br>
+      I love you beyond words, now and forever. 💕
+    </p>
+    <div class="footer">
+      — Forever Yours, Hitu
+    </div>
+  </div>
+
+  <!-- Heart Floating Script -->
+  <script>
+    const container = document.getElementById('hearts-container');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+      heart.style.opacity = 0.5 + Math.random() * 0.5;
+      container.appendChild(heart);
+      setTimeout(() => container.removeChild(heart), 10000);
+    }
+
+    setInterval(createHeart, 50);
+  </script>
+
 </body>
 </html>
